@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,8 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:"Learning Bloc Cubit",
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      title: "Learning Bloc Cubit",
+      home: BlocProvider(
+        create: (context) => CounterState(0),
+        child: MyHomePage(),
+      ),
     );
   }
 }
